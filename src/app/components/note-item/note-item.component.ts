@@ -1,5 +1,5 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {Note} from '../../shared/models/note.model';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Note } from '../../shared/models/note.model';
 
 @Component({
     selector: 'app-note-item',
@@ -7,7 +7,6 @@ import {Note} from '../../shared/models/note.model';
     styleUrls: ['./note-item.component.css']
 })
 export class NoteItemComponent {
-
     @ViewChild('editInput') editInput: ElementRef;
 
     @Input() note: Note;
@@ -15,12 +14,13 @@ export class NoteItemComponent {
     @Output() updateNote: EventEmitter<Note> = new EventEmitter();
     @Output() removeNote: EventEmitter<Note> = new EventEmitter();
 
-    isCompleted = false;
     isNoteEditing = false;
 
     onLabelDblClick() {
         this.isNoteEditing = true;
-        this.editInput.nativeElement.focus();
+        setTimeout(() => {
+            this.editInput.nativeElement.focus();
+        });
     }
 
     onToggleCompletion() {
@@ -44,5 +44,4 @@ export class NoteItemComponent {
     editCancel() {
         this.isNoteEditing = false;
     }
-
 }

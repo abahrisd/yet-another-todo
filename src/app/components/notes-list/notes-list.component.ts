@@ -1,35 +1,31 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Note} from '../../shared/models/note.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Note } from '../../shared/models/note.model';
 
 @Component({
     selector: 'app-notes-list',
     templateUrl: './notes-list.component.html',
     styleUrls: ['./notes-list.component.css']
 })
-export class NotesListComponent implements OnInit {
-
-    @Input() notes: Note[] = [];
-
-    constructor() {
+export class NotesListComponent {
+    @Input() set notes(value: Note[]) {
+        this.localNotes = value.sort((a, b) => (a.title < b.title ? 1 : -1));
+    }
+    get notes(): Note[] {
+        return this.localNotes;
     }
 
-    ngOnInit() {
+    @Output() updateNote: EventEmitter<Note> = new EventEmitter();
+    @Output() removeNote: EventEmitter<Note> = new EventEmitter();
+
+    private localNotes: Note[] = [];
+
+    onUpdate(event) {
+        console.log('onUpdate', event);
+        this.updateNote.emit(event);
     }
 
     onRemove(event) {
         console.log('onRemove', event);
-
+        this.removeNote.emit(event);
     }
-
-    onUpdate(event) {
-        console.log('onUpdate', event);
-
-    }
-
-    onSetState(event) {
-        console.log('onSetState', event);
-
-    }
-
-
 }

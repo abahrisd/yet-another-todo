@@ -1,15 +1,18 @@
 <div class="note-item__root">
-    <div *ngIf="!isNoteEditing" class="note-item__view">
-        <input class="note-item__toggle" type="checkbox" [checked]="note.isCompleted" (click)="onToggleCompletion()">
-        <label class="note-item__label" (dblclick)="onLabelDblClick()">{{note.title}}</label>
-        <button class="note-item__remove-button" (click)="onRemoveNote()"></button>
+    <div *ngIf="!isNoteEditing" class="note-item__view todo-input" [ngClass]="{ 'note-item__view--completed': note.isCompleted }">
+        <input class="note-item__toggle " type="checkbox" [checked]="note.isCompleted" (click)="onToggleCompletion()" />
+        <label class="note-item__label" (dblclick)="onLabelDblClick()">{{ note.title }}</label>
+        <button class="note-item__remove-button" (click)="onRemoveNote()">
+            <img class="clear-icon" src="../../../assets/icons/baseline-clear-24px.svg" alt="" />
+        </button>
     </div>
-    <input *ngIf="isNoteEditing"
-           #editInput
-           class="note-item__edit"
-           [value]="note.title"
-           (blur)="editUpdate(editInput.value)"
-           (keyup.enter)="editUpdate(editInput.value)"
-           (keyup.escape)="editCancel()"
+    <input
+        *ngIf="isNoteEditing"
+        #editInput
+        class="note-item__edit todo-input"
+        [value]="note.title"
+        (blur)="editUpdate(editInput.value)"
+        (keyup.enter)="editUpdate(editInput.value)"
+        (keyup.escape)="editCancel()"
     />
 </div>

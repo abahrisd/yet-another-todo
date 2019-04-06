@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import {Note} from './shared/models/note.model';
+import { Note } from './shared/models/note.model';
 
 export const SUCCESS = 'SUCCESS';
 export const FAIL = 'FAIL';
@@ -15,6 +15,7 @@ export enum ActionTypes {
     CompleteSuccess = '[Note Component] CompleteSuccess',
     Incomplete = '[Note Component] Incomplete',
     IncompleteSuccess = '[Note Component] IncompleteSuccess',
+    Fail = '[Note Component] Fail'
 }
 
 export class Add implements Action {
@@ -62,11 +63,12 @@ export class IncompleteSuccess implements Action {
     constructor(public payload: { id: string }) {}
 }
 
-/*export class Success implements Action {
-    readonly type = ActionTypes.Success;
-}
 export class Fail implements Action {
     readonly type = ActionTypes.Fail;
+    constructor(public payload: any) {}
+}
+/*export class Success implements Action {
+    readonly type = ActionTypes.Success;
 }*/
 
 export type TodoActionsUnion = Add | Remove | Edit | Complete | Incomplete | AddSuccess | RemoveSuccess | EditSuccess | CompleteSuccess | IncompleteSuccess;

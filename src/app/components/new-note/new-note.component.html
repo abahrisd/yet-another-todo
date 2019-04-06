@@ -1,11 +1,7 @@
 <div class="new-note__root">
-  <div class="new-note__input-container">
-      <form [formGroup]="inputForm">
-          <input type="text"
-                 formControlName="title"
-                 (keyup.enter)="onEnter($event)"
-                 [placeholder]="inputPlaceholder"
-          />
-      </form>
-  </div>
+    <div class="new-note__input-container">
+        <form [formGroup]="inputForm" class="new-note__form">
+            <input type="text" class="todo-input" autofocus="" formControlName="title" (keyup.enter)="onEnter($event)" [placeholder]="inputPlaceholder" />
+        </form>
+    </div>
 </div>

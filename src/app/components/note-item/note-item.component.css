@@ -1,0 +1,39 @@
+.note-item__root {
+    transition: all 0.4s;
+}
+
+.note-item__view {
+    position: relative;
+}
+
+.note-item__toggle {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 0;
+}
+
+.note-item__label {
+    word-break: break-all;
+    padding: 15px 15px 15px 40px;
+    display: block;
+    line-height: 1.2;
+}
+.note-item__view--completed .note-item__label {
+    text-decoration: line-through;
+    color: #a89e9e;
+}
+
+.note-item__remove-button {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    border: 0;
+    background-color: white;
+}
+
+.note-item__view:hover .note-item__remove-button {
+    display: block;
+}

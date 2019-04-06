@@ -1,8 +1,8 @@
 <div class="app__root">
-    <app-new-note
-            (addNote)="onAddNote($event)"
-    ></app-new-note>
-    <app-notes-list
-            [notes]="notes$ | async"
-    ></app-notes-list>
+    <header>
+        <h1>YET-ANOTHER-TODO</h1>
+        <app-new-note (addNote)="onAddNote($event)"></app-new-note>
+    </header>
+
+    <app-notes-list [notes]="notes$ | async" (updateNote)="onUpdateNote($event)" (removeNote)="onRemoveNote($event)"></app-notes-list>
 </div>

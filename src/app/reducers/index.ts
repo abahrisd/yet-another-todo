@@ -1,41 +1,27 @@
-import {
-    Action,
-    ActionReducer,
-    ActionReducerMap,
-    createFeatureSelector,
-    createSelector,
-    MetaReducer
-} from '@ngrx/store';
-import { environment } from '../../environments/environment';
-import {Note} from '../shared/models/note.model';
-import {ActionTypes, TodoActionsUnion} from '../app.actions';
+import { Action, ActionReducer, ActionReducerMap, createFeatureSelector, createSelector, MetaReducer } from '@ngrx/store';
+import { Note } from '../shared/models/note.model';
+import { ActionTypes, TodoActionsUnion } from '../app.actions';
+import { Notes } from '../shared/models/notes.interface';
 
 export interface State {
-  notes: Note[];
+    notes: Notes;
 }
 
 export const reducers: ActionReducerMap<State> = {
-    notes: notesReducer,
+    notes: notesReducer
 };
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
-
-export function notesReducer(state = [], action: TodoActionsUnion) {
-    console.log('notesReducer', state);
-
-    const newState = [ ...state];
+export function notesReducer(state = {}, action: TodoActionsUnion) {
+    const newState = { ...state };
 
     switch (action.type) {
-        /*case ActionTypes.Add:
-            console.log('ADD!!', action);
-            newState.push(action.payload);
-            break;*/
         case ActionTypes.AddSuccess:
-            console.log('AddSuccess', action);
-            newState.push(action.payload);
+        case ActionTypes.EditSuccess:
+            newState[action.payload.id] = action.payload;
             break;
-        default:
-            console.log('default redicer case', );
+        case ActionTypes.RemoveSuccess:
+            delete newState[action.payload.id];
+            break;
     }
 
     window.store = newState;

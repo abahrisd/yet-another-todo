@@ -1,0 +1,14 @@
+.app__root {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 600px;
+}
+header h1 {
+    color: #414245;
+}
+.clear-icon {
+    color: #b7ffda;
+}
+.clear-icon :hover {
+    color: green;
+}
