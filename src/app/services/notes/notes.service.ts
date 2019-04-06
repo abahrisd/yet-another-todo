@@ -11,7 +11,9 @@ export class NotesService {
     }
 
     createNote(data) {
-        return of({...data, id: uuid()});
+        const newNote = {...data, id: uuid()};
+        console.log(' NotesService newNote', newNote);
+        return of(newNote);
     }
 
 }

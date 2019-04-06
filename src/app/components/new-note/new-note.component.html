@@ -1,8 +1,11 @@
 <div class="new-note__root">
   <div class="new-note__input-container">
-    <input type="text"
-           (onkeydown.enter)="onEnter($event)"
-           [placeholder]="inputPlaceholder"
-    />
+      <form [formGroup]="inputForm">
+          <input type="text"
+                 formControlName="title"
+                 (keyup.enter)="onEnter($event)"
+                 [placeholder]="inputPlaceholder"
+          />
+      </form>
   </div>
 </div>

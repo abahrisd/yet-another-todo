@@ -69,4 +69,4 @@ export class Fail implements Action {
     readonly type = ActionTypes.Fail;
 }*/
 
-export type TodoActionsUnion = Add | Remove | Edit | Complete | Incomplete;
+export type TodoActionsUnion = Add | Remove | Edit | Complete | Incomplete | AddSuccess | RemoveSuccess | EditSuccess | CompleteSuccess | IncompleteSuccess;

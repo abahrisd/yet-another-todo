@@ -1,0 +1,8 @@
+<div class="notes-list__root">
+    <app-note-item *ngFor="let note of notes"
+       [note]="note"
+       (remove)="onRemove(event)"
+       (update)="onUpdate(event)"
+       (setState)="onSetState(event)"
+    ></app-note-item>
+</div>

@@ -6,7 +6,7 @@ import {NotesService} from './services/notes/notes.service';
 import {ActionTypes, AddSuccess, TodoActionsUnion} from './app.actions';
 
 @Injectable()
-export class MovieEffects {
+export class NotesEffects {
 
     @Effect()
     loadMovies$ = this.actions$
@@ -15,7 +15,10 @@ export class MovieEffects {
             map( (action: TodoActionsUnion) => action.payload),
             mergeMap((data) => this.notesService.createNote(data)
                 .pipe(
-                    map((newNoteData) => new AddSuccess(newNoteData)),
+                    map((newNoteData) => {
+                        console.log('EFF newNoteData', newNoteData);
+                        return  new AddSuccess(newNoteData);
+                    }),
                     catchError(() => EMPTY)
                 ))
         );

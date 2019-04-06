@@ -13,15 +13,16 @@ export class NewNoteComponent {
 
     constructor(private fb: FormBuilder) {
         this.inputForm = this.fb.group({
-            noteTitle: new FormControl('', Validators.required)
+            title: new FormControl('', Validators.required)
         });
+
+        window.test = this.inputForm;
     }
 
     onEnter(event) {
         console.log('enter!', event);
         if (this.inputForm.valid) {
-            const noteTitle = this.inputForm.get('noteTitle').value;
-            this.addNote.emit(noteTitle);
+            this.addNote.emit(this.inputForm.value);
             this.inputForm.reset();
         }
     }
