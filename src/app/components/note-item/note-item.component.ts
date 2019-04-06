@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Note } from '../../shared/models/note.model';
 
 @Component({
@@ -39,6 +39,7 @@ export class NoteItemComponent {
 
         this.note.title = value;
         this.isNoteEditing = false;
+        this.updateNote.emit(this.note);
     }
 
     editCancel() {

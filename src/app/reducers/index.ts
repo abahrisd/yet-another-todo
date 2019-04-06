@@ -1,5 +1,4 @@
-import { Action, ActionReducer, ActionReducerMap, createFeatureSelector, createSelector, MetaReducer } from '@ngrx/store';
-import { Note } from '../shared/models/note.model';
+import { ActionReducerMap } from '@ngrx/store';
 import { ActionTypes, TodoActionsUnion } from '../app.actions';
 import { Notes } from '../shared/models/notes.interface';
 
@@ -12,7 +11,7 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export function notesReducer(state = {}, action: TodoActionsUnion) {
-    const newState = { ...state };
+    let newState = { ...state };
 
     switch (action.type) {
         case ActionTypes.AddSuccess:
@@ -21,6 +20,10 @@ export function notesReducer(state = {}, action: TodoActionsUnion) {
             break;
         case ActionTypes.RemoveSuccess:
             delete newState[action.payload.id];
+            break;
+        case ActionTypes.GetLocalDataSuccess:
+            console.log('GetLocalDataSuccess', action);
+            newState = action.payload;
             break;
     }
 

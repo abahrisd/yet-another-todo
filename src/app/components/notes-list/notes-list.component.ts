@@ -20,12 +20,10 @@ export class NotesListComponent {
     private localNotes: Note[] = [];
 
     onUpdate(event) {
-        console.log('onUpdate', event);
         this.updateNote.emit(event);
     }
 
     onRemove(event) {
-        console.log('onRemove', event);
         this.removeNote.emit(event);
     }
 }

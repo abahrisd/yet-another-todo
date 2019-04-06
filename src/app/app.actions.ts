@@ -1,8 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Note } from './shared/models/note.model';
-
-export const SUCCESS = 'SUCCESS';
-export const FAIL = 'FAIL';
+import { Notes } from './shared/models/notes.interface';
 
 export enum ActionTypes {
     Add = '[Note Component] Add',
@@ -11,10 +9,8 @@ export enum ActionTypes {
     RemoveSuccess = '[Note Component] RemoveSuccess',
     Edit = '[Note Component] Edit',
     EditSuccess = '[Note Component] EditSuccess',
-    Complete = '[Note Component] Complete',
-    CompleteSuccess = '[Note Component] CompleteSuccess',
-    Incomplete = '[Note Component] Incomplete',
-    IncompleteSuccess = '[Note Component] IncompleteSuccess',
+    GetLocalData = '[Note Component] GetLocalData',
+    GetLocalDataSuccess = '[Note Component] GetLocalDataSuccess',
     Fail = '[Note Component] Fail'
 }
 
@@ -45,30 +41,17 @@ export class EditSuccess implements Action {
     constructor(public payload: Note) {}
 }
 
-export class Complete implements Action {
-    readonly type = ActionTypes.Complete;
-    constructor(public payload: { id: string }) {}
+export class GetLocalData implements Action {
+    readonly type = ActionTypes.GetLocalData;
 }
-export class CompleteSuccess implements Action {
-    readonly type = ActionTypes.CompleteSuccess;
-    constructor(public payload: { id: string }) {}
-}
-
-export class Incomplete implements Action {
-    readonly type = ActionTypes.Incomplete;
-    constructor(public payload: { id: string }) {}
-}
-export class IncompleteSuccess implements Action {
-    readonly type = ActionTypes.IncompleteSuccess;
-    constructor(public payload: { id: string }) {}
+export class GetLocalDataSuccess implements Action {
+    readonly type = ActionTypes.GetLocalDataSuccess;
+    constructor(public payload: Notes) {}
 }
 
 export class Fail implements Action {
     readonly type = ActionTypes.Fail;
     constructor(public payload: any) {}
 }
-/*export class Success implements Action {
-    readonly type = ActionTypes.Success;
-}*/
 
-export type TodoActionsUnion = Add | Remove | Edit | Complete | Incomplete | AddSuccess | RemoveSuccess | EditSuccess | CompleteSuccess | IncompleteSuccess;
+export type TodoActionsUnion = Add | Remove | Edit | AddSuccess | RemoveSuccess | EditSuccess | GetLocalData | GetLocalDataSuccess;
