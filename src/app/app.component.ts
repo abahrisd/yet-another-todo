@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
     }
 
     onAddNote(event) {
-        console.log('onAddNote', event);
         this.store$.dispatch(new Add(event));
     }
 

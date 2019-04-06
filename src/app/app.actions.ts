@@ -25,7 +25,7 @@ export class AddSuccess implements Action {
 
 export class Remove implements Action {
     readonly type = ActionTypes.Remove;
-    constructor(public payload: { id: string }) {}
+    constructor(public payload: Note) {}
 }
 export class RemoveSuccess implements Action {
     readonly type = ActionTypes.RemoveSuccess;

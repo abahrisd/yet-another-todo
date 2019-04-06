@@ -1,31 +1,56 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Store } from '@ngrx/store';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestStore } from 'src/app/shared/mocks/test-store';
+import { Add, Edit, Remove } from './app.actions';
+import { Note } from './shared/models/note.model';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+    let component: AppComponent;
+    let fixture: ComponentFixture<AppComponent>;
+    let store: any;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [AppComponent],
+            providers: [{ provide: Store, useClass: TestStore }],
+            schemas: [NO_ERRORS_SCHEMA]
+        }).compileComponents();
+    }));
 
-  it(`should have as title 'yet-another-todo'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('yet-another-todo');
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AppComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+        store = TestBed.get(Store);
+    });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to yet-another-todo!');
-  });
+    it('should create the app', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it('onAddNote call store$.dispatch', () => {
+        const event = new Note();
+        spyOn(store, 'dispatch');
+        expect(component.onAddNote(event)).toEqual(undefined);
+        expect(store.dispatch).toHaveBeenCalled();
+        expect(store.dispatch).toHaveBeenCalledWith(new Add(event));
+    });
+
+    it('onUpdateNote call store$.dispatch', () => {
+        const event = new Note();
+        spyOn(store, 'dispatch');
+        expect(component.onUpdateNote(event)).toEqual(undefined);
+        expect(store.dispatch).toHaveBeenCalled();
+        expect(store.dispatch).toHaveBeenCalledWith(new Edit(event));
+    });
+
+    it('onRemoveNote call store$.dispatch', () => {
+        const event = new Note();
+        spyOn(store, 'dispatch');
+        expect(component.onRemoveNote(event)).toEqual(undefined);
+        expect(store.dispatch).toHaveBeenCalled();
+        expect(store.dispatch).toHaveBeenCalledWith(new Remove(event));
+    });
 });
