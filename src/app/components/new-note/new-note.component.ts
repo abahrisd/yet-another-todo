@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-new-note',
@@ -15,16 +15,12 @@ export class NewNoteComponent {
         this.inputForm = this.fb.group({
             title: new FormControl('', Validators.required)
         });
-
-        window.test = this.inputForm;
     }
 
-    onEnter(event) {
-        console.log('enter!', event);
+    onEnter() {
         if (this.inputForm.valid) {
             this.addNote.emit(this.inputForm.value);
             this.inputForm.reset();
         }
     }
-
 }

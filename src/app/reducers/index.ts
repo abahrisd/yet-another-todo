@@ -22,12 +22,9 @@ export function notesReducer(state = {}, action: TodoActionsUnion) {
             delete newState[action.payload.id];
             break;
         case ActionTypes.GetLocalDataSuccess:
-            console.log('GetLocalDataSuccess', action);
             newState = action.payload;
             break;
     }
-
-    window.store = newState;
 
     return newState;
 }

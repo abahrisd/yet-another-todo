@@ -13,13 +13,6 @@ import { NoteItemComponent } from './components/note-item/note-item.component';
 import { EffectsModule } from '@ngrx/effects';
 import { NotesEffects } from './app.effects';
 
-declare global {
-    interface Window {
-        test: any;
-        store: any;
-    }
-}
-
 @NgModule({
     declarations: [AppComponent, NewNoteComponent, NotesListComponent, NoteItemComponent],
     imports: [
