@@ -4,7 +4,7 @@ import { NewNoteComponent } from './new-note.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-fdescribe('NewNoteComponent', () => {
+describe('NewNoteComponent', () => {
     let component: NewNoteComponent;
     let fixture: ComponentFixture<NewNoteComponent>;
 

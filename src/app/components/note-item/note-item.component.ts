@@ -9,7 +9,7 @@ import { Note } from '../../shared/models/note.model';
 export class NoteItemComponent {
     @ViewChild('editInput') editInput: ElementRef;
 
-    @Input() note: Note;
+    @Input() note: Note = new Note();
 
     @Output() updateNote: EventEmitter<Note> = new EventEmitter();
     @Output() removeNote: EventEmitter<Note> = new EventEmitter();
@@ -34,7 +34,8 @@ export class NoteItemComponent {
 
     editUpdate(value) {
         if (value.length === 0) {
-            return this.onRemoveNote();
+            this.onRemoveNote();
+            return;
         }
 
         this.note.title = value;
