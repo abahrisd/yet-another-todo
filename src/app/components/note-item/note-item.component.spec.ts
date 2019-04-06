@@ -1,7 +1,7 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { NoteItemComponent } from './note-item.component';
-import { DebugElement, ElementRef, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Note } from '../../shared/models/note.model';
 
 export class MockElementRef {
@@ -17,9 +17,6 @@ describe('NoteItemComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [NoteItemComponent],
-            /*providers: [
-                { provide: ElementRef, useClass: MockElementRef }
-            ],*/
             schemas: [NO_ERRORS_SCHEMA]
         }).compileComponents();
     }));
@@ -81,16 +78,6 @@ describe('NoteItemComponent', () => {
         expect(component.removeNote.emit).toHaveBeenCalled();
         expect(component.removeNote.emit).toHaveBeenCalledWith(component.note);
     });
-
-    /*editUpdate(value) {
-        if (value.length === 0) {
-            return this.onRemoveNote();
-        }
-
-        this.note.title = value;
-        this.isNoteEditing = false;
-        this.updateNote.emit(this.note);
-    }*/
 
     it('editUpdate call onRemoveNote() if value.length === 0', () => {
         spyOn(component, 'onRemoveNote');
