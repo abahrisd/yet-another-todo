@@ -11,11 +11,12 @@
     width: 30px;
     position: absolute;
     left: 0;
+    top: calc(50% - 17px);
 }
 
 .note-item__label {
     word-break: break-all;
-    padding: 15px 15px 15px 40px;
+    padding: 10px 15px 10px 40px;
     display: block;
     line-height: 1.2;
 }

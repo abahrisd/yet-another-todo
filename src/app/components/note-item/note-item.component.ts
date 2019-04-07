@@ -33,12 +33,18 @@ export class NoteItemComponent {
     }
 
     editUpdate(value) {
-        if (value.length === 0) {
+        if (!this.isNoteEditing) {
+            return;
+        }
+
+        const newValue = value.trim();
+
+        if (newValue.length === 0) {
             this.onRemoveNote();
             return;
         }
 
-        this.note.title = value;
+        this.note.title = newValue;
         this.isNoteEditing = false;
         this.updateNote.emit(this.note);
     }

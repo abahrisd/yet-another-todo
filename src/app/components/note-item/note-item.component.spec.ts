@@ -80,6 +80,7 @@ describe('NoteItemComponent', () => {
     });
 
     it('editUpdate call onRemoveNote() if value.length === 0', () => {
+        component.isNoteEditing = true;
         spyOn(component, 'onRemoveNote');
 
         expect(component.editUpdate('')).toEqual(undefined);
@@ -87,7 +88,17 @@ describe('NoteItemComponent', () => {
         expect(component.onRemoveNote).toHaveBeenCalledWith();
     });
 
+    it('editUpdate call onRemoveNote() if trimed value.length === 0', () => {
+        component.isNoteEditing = true;
+        spyOn(component, 'onRemoveNote');
+
+        expect(component.editUpdate('     ')).toEqual(undefined);
+        expect(component.onRemoveNote).toHaveBeenCalled();
+        expect(component.onRemoveNote).toHaveBeenCalledWith();
+    });
+
     it('editUpdate set note.title = value if value.length !== 0', () => {
+        component.isNoteEditing = true;
         const value = '' + Math.random();
 
         expect(component.editUpdate(value)).toEqual(undefined);
@@ -95,6 +106,7 @@ describe('NoteItemComponent', () => {
     });
 
     it('editUpdate set isNoteEditing = false if value.length !== 0', () => {
+        component.isNoteEditing = true;
         const value = '' + Math.random();
 
         expect(component.editUpdate(value)).toEqual(undefined);
@@ -102,6 +114,7 @@ describe('NoteItemComponent', () => {
     });
 
     it('editUpdate call updateNote.emit if value.length !== 0', () => {
+        component.isNoteEditing = true;
         const value = '' + Math.random();
 
         spyOn(component.updateNote, 'emit');
