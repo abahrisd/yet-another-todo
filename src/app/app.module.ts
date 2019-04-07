@@ -7,7 +7,7 @@ import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 import { NoteCreatorComponent } from './components/note-creator/note-creator.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NotesListComponent } from './components/notes-list/notes-list.component';
 import { NoteItemComponent } from './components/note-item/note-item.component';
 import { EffectsModule } from '@ngrx/effects';
