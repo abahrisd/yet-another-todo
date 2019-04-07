@@ -1,7 +1,7 @@
 <div class="app__root">
     <header>
         <h1>YET-ANOTHER-TODO</h1>
-        <app-new-note (addNote)="onAddNote($event)"></app-new-note>
+        <app-note-creator (addNote)="onAddNote($event)"></app-note-creator>
     </header>
 
     <app-notes-list [notes]="notes$ | async" (updateNote)="onUpdateNote($event)" (removeNote)="onRemoveNote($event)"></app-notes-list>

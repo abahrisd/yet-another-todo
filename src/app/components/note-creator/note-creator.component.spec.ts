@@ -1,23 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewNoteComponent } from './new-note.component';
+import { NoteCreatorComponent } from './note-creator.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-describe('NewNoteComponent', () => {
-    let component: NewNoteComponent;
-    let fixture: ComponentFixture<NewNoteComponent>;
+describe('NoteCreatorComponent', () => {
+    let component: NoteCreatorComponent;
+    let fixture: ComponentFixture<NoteCreatorComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ReactiveFormsModule],
-            declarations: [NewNoteComponent],
+            declarations: [NoteCreatorComponent],
             schemas: [NO_ERRORS_SCHEMA]
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(NewNoteComponent);
+        fixture = TestBed.createComponent(NoteCreatorComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

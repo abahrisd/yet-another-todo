@@ -11,8 +11,8 @@
         #editInput
         class="note-item__edit todo-input"
         [value]="note.title"
-        (blur)="editUpdate(editInput.value, 'blur')"
-        (keyup.enter)="editUpdate(editInput.value, 'keyup')"
+        (blur)="editUpdate(editInput.value)"
+        (keyup.enter)="editUpdate(editInput.value)"
         (keyup.esc)="editCancel()"
     />
 </div>
